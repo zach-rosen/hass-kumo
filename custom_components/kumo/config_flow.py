@@ -233,11 +233,13 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                 for raw_unit in child["zoneTable"].values():
                     if raw_unit["label"] == user_input["unit_label"]:
                         raw_unit["address"] = user_input["ip_address"]
+                        raw_unit["offset"] = user_input["setpoint_offset"]
                     if "children" in child:
                         for grandchild in child["children"]:
                             for raw_unit in grandchild["zoneTable"].values():
                                 if raw_unit["label"] == user_input["unit_label"]:
                                     raw_unit["address"] = user_input["ip_address"]
+                                    raw_unit["offset"] = user_input["setpoint_offset"]
             await self.hass.async_add_executor_job(
                 save_json, self.hass.config.path(KUMO_CONFIG_CACHE), kumo_cache
             )
@@ -247,6 +249,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
             {
                 vol.Required("unit_label"): vol.In(kumo_unit_list.keys()),
                 vol.Optional("ip_address"): str,
+                vol.Optional("setpoint_offset", default=0.0): str,
             }
         )
 

@@ -43,7 +43,8 @@
         "description": "You must reload the integration after setting IP addresses",
         "data": {
           "unit_label": "Unit Label",
-          "ip_address": "IP Address"
+          "ip_address": "IP Address",
+          "setpoint_offset": "Setpoint Offset"
         }
       }
     }
