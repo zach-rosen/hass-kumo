@@ -277,10 +277,10 @@ class KumoThermostat(CoordinatedKumoEntity, ClimateEntity):
         """Refresh cached fan mode."""
         self._fan_mode = self._pykumo.get_fan_speed()
 
-    @property
-    def fan_modes(self):
-        """Return the list of available operation modes."""
-        return self._fan_modes
+#     @property
+#     def fan_modes(self):
+#         """Return the list of available operation modes."""
+#         return self._fan_modes
 
     @property
     def swing_mode(self):
