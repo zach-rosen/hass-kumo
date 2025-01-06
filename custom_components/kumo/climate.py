@@ -4,6 +4,7 @@ import pprint
 
 import voluptuous as vol
 from homeassistant.components.climate import PLATFORM_SCHEMA
+from homeassistant.const import PRECISION_HALVES, PRECISION_TENTHS
 from homeassistant.exceptions import ConfigEntryNotReady
 
 from .const import DOMAIN
@@ -211,6 +212,11 @@ class KumoThermostat(CoordinatedKumoEntity, ClimateEntity):
         """Return the list of supported features."""
         return self._supported_features
 
+    @property
+    def precision(self):
+        """Return the precision of the system."""
+        return PRECISION_TENTHS
+        
     @property
     def temperature_unit(self):
         """Return the unit of measurement which this thermostat uses."""
